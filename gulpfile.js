@@ -29,7 +29,7 @@ gulp.task('html', function () {
         .src('./src/*.html')
         .pipe(plumber(plumberHtmlConfig))
         .pipe(fileInclude(fileIncludeSetting))
-        .pipe(gulp.dest('./dist/'))
+        .pipe(gulp.dest('./docs/'))
 });
 
 const plumberSassConfig = {
@@ -50,20 +50,20 @@ gulp.task('sass', function () {
         .pipe(sass())
         //.pipe(groupMedia())// обьединяет media
         .pipe(sourceMaps.write())
-        .pipe(gulp.dest('./dist/css/'))
+        .pipe(gulp.dest('./docs/css/'))
 
 });
 
 //img//
 gulp.task('images', function () {
     return gulp.src('./src/img/**/*')
-        .pipe(gulp.dest('./dist/img/'));
+        .pipe(gulp.dest('./docs/img/'));
 });
 
 //fonts
 gulp.task('fonts', function () {
     return gulp.src('./src/fonts/**/*')
-        .pipe(gulp.dest('./dist/fonts/'));
+        .pipe(gulp.dest('./docs/fonts/'));
 });
 
 //сервер
@@ -73,13 +73,13 @@ const serverOption = {
 }
 
 gulp.task('server', function () {
-    return gulp.src('./dist/')
+    return gulp.src('./docs/')
         .pipe(server(serverOption));
 });
 //удаления папок из dist
 gulp.task('clean', function (done) {
-    if (fs.existsSync('./dist')) {
-        return gulp.src('./dist/', { read: false })
+    if (fs.existsSync('./docs/')) {
+        return gulp.src('./docs/', { read: false })
             .pipe(clean({ force: true }));
     }
     done();
