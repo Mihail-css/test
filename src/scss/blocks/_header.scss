@@ -1,0 +1,12 @@
+.header {
+    background-color: gray;
+    padding: 100px 10px;
+    font-size: 38px;
+    text-align: center;
+    color: rgb(94, 211, 48);
+
+    @media (max-width:1200px) {
+        font-size: 26px;
+    }
+
+}
